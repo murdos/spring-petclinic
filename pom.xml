@@ -429,12 +429,12 @@
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-test-impact-analysis-plugin</artifactId>
-                        <version>1.0.0-RC2</version>
+                        <version>1.0.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
-                        <version>1.0.0-RC2</version>
+                        <version>1.0.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
