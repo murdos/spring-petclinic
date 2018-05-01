@@ -35,9 +35,9 @@ MATCH
 WHERE
   master.name = "heads/master"
   and branch.name in [
-    "heads/violations",
+    "heads/jqa-violations",
     "heads/jqa-remote",
-    "heads/testimpactanalysis"
+    "heads/jqa-testimpactanalysis"
   ]
 WITH
   master, branch
