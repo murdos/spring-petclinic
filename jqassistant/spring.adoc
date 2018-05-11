@@ -239,4 +239,3 @@ RETURN
   otherType as Dependency
 ----
 
-link:graphml/spring_VirtualDependency.graphml[GraphML Report]

@@ -12,7 +12,7 @@ The following
 === Reports
 
 [[package:DependencyDiagram]]
-[source,cypher,role=concept,requiresConcepts="layer:LayerDependency",reportProperties="render=component-diagram"]
+[source,cypher,role=concept,requiresConcepts="layer:LayerDependency",reportType="plantuml-component-diagram"]
 .Creates a diagram about dependencies between layers.
 ----
 MATCH

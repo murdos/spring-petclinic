@@ -23,7 +23,7 @@ RETURN
 === Reports
 
 [[maven:ProjectArtifactDependencyDiagram]]
-[source,cypher,role=concept,requiresConcepts="maven:MainArtifact",reportProperties="render=component-diagram"]
+[source,cypher,role=concept,requiresConcepts="maven:MainArtifact",reportType="plantuml-component-diagram"]
 .Creates a diagram about project artifact dependencies.
 ----
 MATCH

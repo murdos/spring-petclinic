@@ -92,8 +92,6 @@ RETURN
   *
 ----
 
-link:graphml/layer_LayerDependencyDefinition.graphml[GraphML Report]
-
 === Constraints
 
 [[layer:LayerDependencyViolation]]
@@ -117,7 +115,7 @@ RETURN
 === Reports
 
 [[layer:LayerDependencyDiagram]]
-[source,cypher,role=concept,requiresConcepts="layer:LayerDependency",reportProperties="render=component-diagram"]
+[source,cypher,role=concept,requiresConcepts="layer:LayerDependency",reportType="plantuml-component-diagram"]
 .Creates a diagram about dependencies between layers.
 ----
 MATCH
@@ -144,4 +142,3 @@ RETURN {
 } as TypesPerLayer
 ----
 
-link:graphml/layer_LayerDependency.graphml[GraphML Report]
