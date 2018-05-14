@@ -10,42 +10,36 @@ The root package of the application is "org.springframework.samples.petclinic".
 
 [[layer:Root]]
 .Labels the root package of the main artifact as `Root`
-[source,cypher,role=concept,requiresConcepts="maven:MainArtifact"]
+[plantuml,rootPackage,role=concept,requiresConcepts="maven:MainArtifact"]
 ----
-MATCH
-  (:Main:Artifact)-[:CONTAINS]->(rootPackage:Package)
-WHERE
-  rootPackage.fqn = "org.springframework.samples.petclinic"
-SET
-  rootPackage:Root
-RETURN
-  rootPackage as RootPackage
+@startuml
+skinparam componentStyle uml2
+
+node " " as main <<Maven>><<Main>><<Artifact>> {
+  package "root {fqn:'org.springframework.samples.petclinic'}" as root <<Package>><<+Root>>
+}
+
+main -> root : :CONTAINS
+
+@enduml
 ----
 
-The application has a layered structure. Each layer is represented by a package located directly in the root package:
-
-- web
-- service
-- repository
-- model
+The application has a layered structure. Each layer is represented by a package located directly in the root package.
 
 [[layer:Layer]]
 .Labels all direct sub-packages of the root package as `Layer`.
-[source,cypher,role=concept,requiresConcepts="layer:Root"]
+[plantuml,layer,role=concept,requiresConcepts="layer:Root"]
 ----
-MATCH
-  (:Root:Package)-[:CONTAINS]->(layer:Package)
-WHERE
-  layer.name in [
-    "web",
-    "service",
-    "repository",
-    "model"
-  ]
-SET
-  layer:Layer
-RETURN
-  layer as Layer
+@startuml
+skinparam componentStyle uml2
+
+package [] as root <<Package>><<Root>> {
+  package "layer" as layer <<Package>><<+Layer>>
+}
+
+root -> layer : :CONTAINS
+
+@enduml
 ----
 
 A dependency between two layers exists if there are dependencies between Java types in any of the sub-packages.
@@ -79,10 +73,10 @@ The following dependencies between layers are defined:
 @startuml
 skinparam componentStyle uml2
 
-[ {name:"web"}]        as web        <<Layer>>
-[ {name:"service"}]    as service    <<Layer>>
-[ {name:"repository"}] as repository <<Layer>>
-[ {name:"model"}]      as model      <<Layer>>
+[{name:"web"}]        as web        <<Layer>>
+[{name:"service"}]    as service    <<Layer>>
+[{name:"repository"}] as repository <<Layer>>
+[{name:"model"}]      as model      <<Layer>>
 
 
 web        -down-> service    : :+DEFINES_DEPENDENCY
