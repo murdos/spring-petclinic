@@ -71,25 +71,27 @@ RETURN
 ----
 
 
-There are definitions of allowed dependencies between layers.
+The following dependencies between layers are defined:
 
 [[layer:LayerDependencyDefinition]]
-[source,cypher,role=concept,requiresConcepts="layer:Layer",reportType="graphml"]
-.Adds `DEFINES_DEPENDENCY` relations between layers for allowed dependencies.
+[plantuml,layerdeps,role=concept,requiresConcepts="layer:Layer"]
 ----
-MATCH
-  (web:Layer {name:"web"}),
-  (service:Layer {name:"service"}),
-  (repository:Layer {name:"repository"}),
-  (model:Layer {name:"model"})
-CREATE UNIQUE
- (web)-[w1:DEFINES_DEPENDENCY]->(service),
- (web)-[w2:DEFINES_DEPENDENCY]->(model),
- (service)-[s1:DEFINES_DEPENDENCY]->(repository),
- (service)-[s2:DEFINES_DEPENDENCY]->(model),
- (repository)-[r1:DEFINES_DEPENDENCY]->(model)
-RETURN
-  *
+@startuml
+skinparam componentStyle uml2
+
+[ {name:"web"}]        as web        <<Layer>>
+[ {name:"service"}]    as service    <<Layer>>
+[ {name:"repository"}] as repository <<Layer>>
+[ {name:"model"}]      as model      <<Layer>>
+
+
+web        -down-> service    : :+DEFINES_DEPENDENCY
+web        -down-> model      : :+DEFINES_DEPENDENCY
+service    -down-> repository : :+DEFINES_DEPENDENCY
+service    -down-> model      : :+DEFINES_DEPENDENCY
+repository -down-> model      : :+DEFINES_DEPENDENCY
+
+@enduml
 ----
 
 === Constraints
