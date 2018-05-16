@@ -26,7 +26,7 @@ The following rule groups are executed during a build:
 - <<maven:Default>>
 - <<package:Default>>
 - <<layer:Default>>
-- <<spring-component:PetClinic>>
+- <<spring:Default>>
 - <<model:Default>>
 - <<business:Default>>
 - <<management:Default>>
