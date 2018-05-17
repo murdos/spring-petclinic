@@ -417,6 +417,10 @@
                                     <path>${project.basedir}/.git</path>
                                 </scanInclude>
                             </scanIncludes>
+                            <rule>
+                                <defaultConceptSeverity>INFO</defaultConceptSeverity>
+                                <defaultConstraintSeverity>MAJOR</defaultConstraintSeverity>
+                            </rule>
                             <reportProperties>
                                 <asciidoc.report.rule.directory>${session.topLevelProject.basedir}/jqassistant</asciidoc.report.rule.directory>
                                 <asciidoc.report.file.include>index.adoc</asciidoc.report.file.include>
