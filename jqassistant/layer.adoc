@@ -45,7 +45,7 @@ root -> layer : :CONTAINS
 A dependency between two layers exists if there are dependencies between Java types in any of the sub-packages.
 
 [[layer:LayerDependency]]
-[source,cypher,role=concept,requiresConcepts="layer:Layer"]
+[source,cypher,role=concept,requiresConcepts="layer:Layer",reportType="csv"]
 .Adds a relation `DEPENDS_ON` between two layers if there are type dependencies between them.
 ----
 MATCH
