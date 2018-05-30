@@ -79,11 +79,11 @@ skinparam componentStyle uml2
 [{name:"model"}]      as model      <<Layer>>
 
 
-web        -down-> service    : :+DEFINES_DEPENDENCY
-web        -down-> model      : :+DEFINES_DEPENDENCY
-service    -down-> repository : :+DEFINES_DEPENDENCY
-service    -down-> model      : :+DEFINES_DEPENDENCY
-repository -down-> model      : :+DEFINES_DEPENDENCY
+web        -down-> service    : +:DEFINES_DEPENDENCY
+web        -down-> model      : +:DEFINES_DEPENDENCY
+service    -down-> repository : +:DEFINES_DEPENDENCY
+service    -down-> model      : +:DEFINES_DEPENDENCY
+repository -down-> model      : +:DEFINES_DEPENDENCY
 
 @enduml
 ----
