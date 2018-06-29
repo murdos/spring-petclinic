@@ -10,48 +10,42 @@ The root package of the application is "org.springframework.samples.petclinic".
 
 [[layer:Root]]
 .Labels the root package of the main artifact as `Root`
-[source,cypher,role=concept,requiresConcepts="maven:MainArtifact"]
+[plantuml,rootPackage,role=concept,requiresConcepts="maven:MainArtifact"]
 ----
-MATCH
-  (:Main:Artifact)-[:CONTAINS]->(rootPackage:Package)
-WHERE
-  rootPackage.fqn = "org.springframework.samples.petclinic"
-SET
-  rootPackage:Root
-RETURN
-  rootPackage as RootPackage
+@startuml
+skinparam componentStyle uml2
+
+node " " as main <<Maven>><<Main>><<Artifact>> {
+  package "root {fqn:'org.springframework.samples.petclinic'}" as root <<Package>><<+Root>>
+}
+
+main -> root : :CONTAINS
+
+@enduml
 ----
 
-The application has a layered structure. Each layer is represented by a package located directly in the root package:
-
-- web
-- service
-- repository
-- model
+The application has a layered structure. Each layer is represented by a package located directly in the root package.
 
 [[layer:Layer]]
 .Labels all direct sub-packages of the root package as `Layer`.
-[source,cypher,role=concept,requiresConcepts="layer:Root"]
+[plantuml,layer,role=concept,requiresConcepts="layer:Root"]
 ----
-MATCH
-  (:Root:Package)-[:CONTAINS]->(layer:Package)
-WHERE
-  layer.name in [
-    "web",
-    "service",
-    "repository",
-    "model"
-  ]
-SET
-  layer:Layer
-RETURN
-  layer as Layer
+@startuml
+skinparam componentStyle uml2
+
+package [] as root <<Package>><<Root>> {
+  package "layer" as layer <<Package>><<+Layer>>
+}
+
+root -> layer : :CONTAINS
+
+@enduml
 ----
 
 A dependency between two layers exists if there are dependencies between Java types in any of the sub-packages.
 
 [[layer:LayerDependency]]
-[source,cypher,role=concept,requiresConcepts="layer:Layer"]
+[source,cypher,role=concept,requiresConcepts="layer:Layer",reportType="csv"]
 .Adds a relation `DEPENDS_ON` between two layers if there are type dependencies between them.
 ----
 MATCH
@@ -71,28 +65,28 @@ RETURN
 ----
 
 
-There are definitions of allowed dependencies between layers.
+The following dependencies between layers are defined:
 
 [[layer:LayerDependencyDefinition]]
-[source,cypher,role=concept,requiresConcepts="layer:Layer",reportType="graphml"]
-.Adds `DEFINES_DEPENDENCY` relations between layers for allowed dependencies.
+[plantuml,layerdeps,role=concept,requiresConcepts="layer:Layer"]
 ----
-MATCH
-  (web:Layer {name:"web"}),
-  (service:Layer {name:"service"}),
-  (repository:Layer {name:"repository"}),
-  (model:Layer {name:"model"})
-CREATE UNIQUE
- (web)-[w1:DEFINES_DEPENDENCY]->(service),
- (web)-[w2:DEFINES_DEPENDENCY]->(model),
- (service)-[s1:DEFINES_DEPENDENCY]->(repository),
- (service)-[s2:DEFINES_DEPENDENCY]->(model),
- (repository)-[r1:DEFINES_DEPENDENCY]->(model)
-RETURN
-  *
-----
+@startuml
+skinparam componentStyle uml2
 
-link:graphml/layer_LayerDependencyDefinition.graphml[GraphML Report]
+[{name:"web"}]        as web        <<Layer>>
+[{name:"service"}]    as service    <<Layer>>
+[{name:"repository"}] as repository <<Layer>>
+[{name:"model"}]      as model      <<Layer>>
+
+
+web        -down-> service    : +:DEFINES_DEPENDENCY
+web        -down-> model      : +:DEFINES_DEPENDENCY
+service    -down-> repository : +:DEFINES_DEPENDENCY
+service    -down-> model      : +:DEFINES_DEPENDENCY
+repository -down-> model      : +:DEFINES_DEPENDENCY
+
+@enduml
+----
 
 === Constraints
 
@@ -117,7 +111,7 @@ RETURN
 === Reports
 
 [[layer:LayerDependencyDiagram]]
-[source,cypher,role=concept,requiresConcepts="layer:LayerDependency",reportProperties="render=component-diagram"]
+[source,cypher,role=concept,requiresConcepts="layer:LayerDependency",reportType="plantuml-component-diagram"]
 .Creates a diagram about dependencies between layers.
 ----
 MATCH
@@ -144,4 +138,3 @@ RETURN {
 } as TypesPerLayer
 ----
 
-link:graphml/layer_LayerDependency.graphml[GraphML Report]
