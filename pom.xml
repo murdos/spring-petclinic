@@ -446,12 +446,12 @@
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
-                        <version>1.1.0-SNAPSHOT</version>
+                        <version>1.1.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
-                        <version>1.0.0-SNAPSHOT</version>
+                        <version>1.0.0</version>
                     </dependency>
                     <!-- fix a problem with rendering un-numbered lists in Asciidoctor 1.5.6 -->
                     <dependency>
