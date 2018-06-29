@@ -440,10 +440,11 @@
                 -->
                 <dependencies>
                     <dependency>
-                        <groupId>de.kontext-e.jqassistant.plugin</groupId>
-                        <artifactId>jqassistant.plugin.git</artifactId>
-                        <version>1.4.1</version>
+                        <groupId>org.jqassistant.contrib.plugin</groupId>
+                        <artifactId>jqassistant-test-impact-analysis-plugin</artifactId>
+                        <version>1.4.0</version>
                     </dependency>
+                    <!-- additional plugins -->
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
