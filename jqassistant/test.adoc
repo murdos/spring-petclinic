@@ -1,5 +1,5 @@
 [[test:Default]]
-[role=group,includesConstraints="test:TestMethodWithoutAssertion,junit:IgnoreWithoutMessage"]
+[role=group,includesConstraints="test:*,junit:IgnoreWithoutMessage"]
 == Tests
 
 The following test rules apply:

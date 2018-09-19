@@ -1,5 +1,5 @@
 [[business:Default]]
-[role=group,includesConcepts="business:Subdomain,business:SubdomainDependency"]
+[role=group,includesConcepts="business:*"]
 == Business
 
 This section describes the application from the business' perspective.

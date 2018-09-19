@@ -1,5 +1,5 @@
 [[management:Default]]
-[role=group,includesConcepts="management:ManagedResources"]
+[role=group,includesConcepts="management:*"]
 == Management
 
 The following reports are created:

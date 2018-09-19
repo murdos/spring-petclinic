@@ -1,5 +1,5 @@
 [[layer:Default]]
-[role=group,includesConstraints="layer:LayerDependencyViolation",includesConcepts="layer:LayerDependencyDiagram,layer:LayerDependency.graphml"]
+[role=group,includesConstraints="layer:*",includesConcepts="layer:*"]
 == Layer
 
 This chapter describes the concepts and constraints related to the layered package structure.

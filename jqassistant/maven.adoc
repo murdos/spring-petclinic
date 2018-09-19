@@ -1,5 +1,5 @@
 [[maven:Default]]
-[role=group,includesConcepts="maven:ProjectArtifactDependencyDiagram"]
+[role=group,includesConcepts="maven:*"]
 == Maven
 
 This chapter describes the rules related to Maven.

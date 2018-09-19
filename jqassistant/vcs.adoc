@@ -1,5 +1,5 @@
 [[vcs:Default]]
-[role=group,includesConstraints="vcs:BranchesMustBeSynchronized",includesConcepts="vcs:CurrentBranch"]
+[role=group,includesConstraints="vcs:*",includesConcepts="vcs:*"]
 == Version Control System
 
 The rules defined in this document refer to Git.
