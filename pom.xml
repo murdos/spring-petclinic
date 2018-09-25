@@ -42,7 +42,7 @@
         <cobertura.version>2.7</cobertura.version>
 
         <!-- jQAssistant and asciidoctor -->
-        <jqassistant.version>1.5.0-RC1</jqassistant.version>
+        <jqassistant.version>1.5.0-RC-1</jqassistant.version>
     </properties>
 
     <pluginRepositories>
