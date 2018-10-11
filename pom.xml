@@ -42,7 +42,7 @@
         <cobertura.version>2.7</cobertura.version>
 
         <!-- jQAssistant and asciidoctor -->
-        <jqassistant.version>1.5.0-RC1</jqassistant.version>
+        <jqassistant.version>1.5.0-RC-2-SNAPSHOT</jqassistant.version>
     </properties>
 
     <pluginRepositories>
@@ -424,15 +424,21 @@
                         </configuration>
                     </execution>
                 </executions>
-                <!--
                 <configuration>
                     <store>
+                        <!--
                         <uri>bolt://localhost:7687</uri>
                         <username>neo4j</username>
                         <password>admin</password>
+                        <embedded>
+                            <listenAddress>localhost</listenAddress>
+                            <httpPort>7474</httpPort>
+                            <boltPort>7687</boltPort>
+                            <apocEnabled>true</apocEnabled>
+                        </embedded>
+                        -->
                     </store>
                 </configuration>
-                -->
                 <dependencies>
                     <dependency>
                         <groupId>de.kontext-e.jqassistant.plugin</groupId>
