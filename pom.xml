@@ -42,7 +42,7 @@
         <cobertura.version>2.7</cobertura.version>
 
         <!-- jQAssistant -->
-        <jqassistant.version>1.6.0-SNAPSHOT</jqassistant.version>
+        <jqassistant.version>1.5.0</jqassistant.version>
     </properties>
 
     <pluginRepositories>
