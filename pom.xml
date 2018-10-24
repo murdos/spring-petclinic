@@ -41,8 +41,8 @@
 
         <cobertura.version>2.7</cobertura.version>
 
-        <!-- jQAssistant and asciidoctor -->
-        <jqassistant.version>1.5.0-RC-2-SNAPSHOT</jqassistant.version>
+        <!-- jQAssistant -->
+        <jqassistant.version>1.6.0-SNAPSHOT</jqassistant.version>
     </properties>
 
     <pluginRepositories>
@@ -448,7 +448,7 @@
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
-                        <version>1.2.0-SNAPSHOT</version>
+                        <version>1.5.0-SNAPSHOT</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
