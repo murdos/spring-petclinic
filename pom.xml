@@ -405,8 +405,8 @@
                             <goal>analyze</goal>
                         </goals>
                         <configuration>
-                            <failOnSeverity>CRITICAL</failOnSeverity>
                             <warnOnSeverity>MINOR</warnOnSeverity>
+                            <failOnSeverity>CRITICAL</failOnSeverity>
                             <!--
                             <groups>
                                 <group>default</group>
@@ -443,7 +443,7 @@
                     <dependency>
                         <groupId>de.kontext-e.jqassistant.plugin</groupId>
                         <artifactId>jqassistant.plugin.git</artifactId>
-                        <version>1.4.1</version>
+                        <version>1.5.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
@@ -453,7 +453,7 @@
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
-                        <version>1.0.0</version>
+                        <version>1.5.0-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
             </plugin>
