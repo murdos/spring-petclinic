@@ -15,7 +15,7 @@ This chapter describes the concepts and constraints related to the layered packa
 skinparam componentStyle uml2
 
 node " " as main <<Maven>><<Main>><<Artifact>> {
-  package "root {fqn:'org.springframework.samples.petclinic'}" as root <<Package>><<+Root>>
+  package "root {fqn:'org.springframework.samples.petclinic'}" as root <<Package>><<(+) Root>>
 }
 
 main -> root : :CONTAINS
@@ -32,7 +32,7 @@ main -> root : :CONTAINS
 skinparam componentStyle uml2
 
 package [] as root <<Package>><<Root>> {
-  package "layer" as layer <<Package>><<+Layer>>
+  package "layer" as layer <<Package>><<(+) Layer>>
 }
 
 root -> layer : :CONTAINS
@@ -76,11 +76,11 @@ skinparam componentStyle uml2
 [{name:"model"}]      as model      <<Layer>>
 
 
-web        -down-> service    : +:DEFINES_DEPENDENCY
-web        -down-> model      : +:DEFINES_DEPENDENCY
-service    -down-> repository : +:DEFINES_DEPENDENCY
-service    -down-> model      : +:DEFINES_DEPENDENCY
-repository -down-> model      : +:DEFINES_DEPENDENCY
+web        -down-> service    : (+) :DEFINES_DEPENDENCY
+web        -down-> model      : (+) :DEFINES_DEPENDENCY
+service    -down-> repository : (+) :DEFINES_DEPENDENCY
+service    -down-> model      : (+) :DEFINES_DEPENDENCY
+repository -down-> model      : (+) :DEFINES_DEPENDENCY
 
 @enduml
 ----
