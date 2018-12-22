@@ -443,17 +443,17 @@
                     <dependency>
                         <groupId>de.kontext-e.jqassistant.plugin</groupId>
                         <artifactId>jqassistant.plugin.git</artifactId>
-                        <version>1.5.0</version>
+                        <version>1.6.1</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
-                        <version>1.5.1</version>
+                        <version>1.6.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
-                        <version>1.6.0-SNAPSHOT</version>
+                        <version>1.6.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
