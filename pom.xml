@@ -456,6 +456,11 @@
                         <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
                         <version>1.6.0</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.jqassistant.contrib.plugin</groupId>
+                        <artifactId>jqassistant-test-impact-analysis-plugin</artifactId>
+                        <version>1.6.0</version>
+                    </dependency>
                 </dependencies>
             </plugin>
         </plugins>
