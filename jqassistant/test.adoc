@@ -1,12 +1,15 @@
 [[test:Default]]
-[role=group,includesConstraints="test:TestMethodWithoutAssertion,junit:IgnoreWithoutMessage,test-impact-analysis:TestGapForCurrentGitBranch"]
+[role=group,includesConstraints="test:*,junit:IgnoreWithoutMessage,test-impact-analysis:TestGapForCurrentGitBranch"]
 == Tests
 
 The following test rules apply:
 
 - <<test:TestMethodWithoutAssertion>>
 - All @Ignore annotations must provide a message
-- Test gap for the current branch
+
+The following reports are created:
+
+- <<test:TestAffectedByLastCommit>>
 
 === Constraints
 

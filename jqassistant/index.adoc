@@ -7,14 +7,17 @@
 
 This document describes coding rules for the Spring PetClinic.
 
-NOTE: The rules defined in this and all included documents are for demonstration purposes only and work in progress. For
-rendering of embedded diagrams http://www.graphviz.org[Graphviz] needs to be installed and available via the system path.
+NOTE: The rules defined in this and all included documents are for demonstration purposes only and should be considered as work in progress.
+Feedback and enhancements are welcome, you're invited to create an issue or pull-request on https://github.com/buschmais/spring-petclinic[GitHub].
 
-TIP: GraphML reports may be viewed using http://www.yworks.com/en/products/yfiles/yed/[yEd]. After opening a file you
-should apply a layout, e.g. menu:Layout[Hierarchical].
+NOTE: For rendering of embedded diagrams http://www.graphviz.org[Graphviz] needs to be installed and available via the system path.
+
+TIP: GraphML reports may be viewed using http://www.yworks.com/en/products/yfiles/yed/[yEd].
+After opening a file you should apply a layout, e.g. menu:Layout[Hierarchical].
 
 == Summary
 
+// Includes a summary about all executed constraints and concepts including their status and description
 include::jQA:Summary[]
 
 == CI Build
@@ -48,4 +51,6 @@ include::assertj.adoc[]
 
 == Imported Rules
 
+// Includes all executed rules that have been imported from plugins
 include::jQA:ImportedRules[]
+

@@ -1,5 +1,5 @@
 [[vcs:Default]]
-[role=group,includesConstraints="vcs:BranchesMustBeSynchronized",includesConcepts="vcs:CurrentBranch"]
+[role=group,includesConstraints="vcs:*",includesConcepts="vcs:*"]
 == Version Control System
 
 The rules defined in this document refer to Git.
@@ -7,7 +7,7 @@ The rules defined in this document refer to Git.
 === Concepts
 [[vcs:CurrentBranch]]
 [source,cypher,role=concept]
-.Labels the current branch with `Current`.
+.The currently checked-out local branch is labeled with `Current`.
 ----
 MATCH
   (repository:Repository)-[:HAS_BRANCH]->(branch:Git:Branch)

@@ -1,22 +1,21 @@
 [[layer:Default]]
-[role=group,includesConstraints="layer:LayerDependencyViolation",includesConcepts="layer:LayerDependencyDiagram,layer:LayerDependency.graphml"]
+[role=group,includesConstraints="layer:*",includesConcepts="layer:*"]
 == Layer
 
-This chapter describes the concepts and constraints related to the layered package structure.
+This chapter describes the concepts and constraints related to the layered package structure of the application.
 
 === Concepts
 
-The root package of the application is "org.springframework.samples.petclinic".
 
 [[layer:Root]]
-.Labels the root package of the main artifact as `Root`
-[plantuml,rootPackage,role=concept,requiresConcepts="maven:MainArtifact"]
+[plantuml,rootPackage,role=concept]
+.The root package of the application is "org.springframework.samples.petclinic" and labeled as `Root`.
 ----
 @startuml
 skinparam componentStyle uml2
 
 node " " as main <<Maven>><<Main>><<Artifact>> {
-  package "root {fqn:'org.springframework.samples.petclinic'}" as root <<Package>><<+Root>>
+  package "root {fqn:'org.springframework.samples.petclinic'}" as root <<Package>><<(+) Root>>
 }
 
 main -> root : :CONTAINS
@@ -24,17 +23,16 @@ main -> root : :CONTAINS
 @enduml
 ----
 
-The application has a layered structure. Each layer is represented by a package located directly in the root package.
 
 [[layer:Layer]]
-.Labels all direct sub-packages of the root package as `Layer`.
+.The application has a layered structure. Each layer is represented by a package located directly in the root package and labeled as `Layer`.
 [plantuml,layer,role=concept,requiresConcepts="layer:Root"]
 ----
 @startuml
 skinparam componentStyle uml2
 
 package [] as root <<Package>><<Root>> {
-  package "layer" as layer <<Package>><<+Layer>>
+  package "layer" as layer <<Package>><<(+) Layer>>
 }
 
 root -> layer : :CONTAINS
@@ -42,11 +40,10 @@ root -> layer : :CONTAINS
 @enduml
 ----
 
-A dependency between two layers exists if there are dependencies between Java types in any of the sub-packages.
 
 [[layer:LayerDependency]]
 [source,cypher,role=concept,requiresConcepts="layer:Layer",reportType="csv"]
-.Adds a relation `DEPENDS_ON` between two layers if there are type dependencies between them.
+.A dependency between two layers exists if there are dependencies between Java types in any of the sub-packages. These are represented by `DEPENDS_ON` relations.
 ----
 MATCH
   (layer1:Layer:Package)-[:CONTAINS*]->(type1:Type),
@@ -65,10 +62,10 @@ RETURN
 ----
 
 
-The following dependencies between layers are defined:
 
 [[layer:LayerDependencyDefinition]]
 [plantuml,layerdeps,role=concept,requiresConcepts="layer:Layer"]
+.The dependencies between layers are represented by `DEFINES_DEPENDENCY` relations.
 ----
 @startuml
 skinparam componentStyle uml2
@@ -79,11 +76,11 @@ skinparam componentStyle uml2
 [{name:"model"}]      as model      <<Layer>>
 
 
-web        -down-> service    : +:DEFINES_DEPENDENCY
-web        -down-> model      : +:DEFINES_DEPENDENCY
-service    -down-> repository : +:DEFINES_DEPENDENCY
-service    -down-> model      : +:DEFINES_DEPENDENCY
-repository -down-> model      : +:DEFINES_DEPENDENCY
+web        -down-> service    : (+) :DEFINES_DEPENDENCY
+web        -down-> model      : (+) :DEFINES_DEPENDENCY
+service    -down-> repository : (+) :DEFINES_DEPENDENCY
+service    -down-> model      : (+) :DEFINES_DEPENDENCY
+repository -down-> model      : (+) :DEFINES_DEPENDENCY
 
 @enduml
 ----
@@ -112,7 +109,7 @@ RETURN
 
 [[layer:LayerDependencyDiagram]]
 [source,cypher,role=concept,requiresConcepts="layer:LayerDependency",reportType="plantuml-component-diagram"]
-.Creates a diagram about dependencies between layers.
+.Diagram about existing dependencies between layers.
 ----
 MATCH
   (layer:Layer)
@@ -124,7 +121,7 @@ RETURN
 
 [[layer:LayerDependency.graphml]]
 [source,cypher,role=concept,requiresConcepts="layer:LayerDependency",reportType="graphml"]
-.Creates a GraphML report about dependencies between layers and their contained types.
+.GraphML report about dependencies between layers and their contained types.
 ----
 MATCH
   (layer:Layer:Package)-[:CONTAINS*]->(type:Type)

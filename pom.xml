@@ -41,8 +41,8 @@
 
         <cobertura.version>2.7</cobertura.version>
 
-        <!-- jQAssistant and asciidoctor -->
-        <jqassistant.version>1.4.0</jqassistant.version>
+        <!-- jQAssistant -->
+        <jqassistant.version>1.6.0</jqassistant.version>
     </properties>
 
     <pluginRepositories>
@@ -405,8 +405,8 @@
                             <goal>analyze</goal>
                         </goals>
                         <configuration>
-                            <failOnSeverity>CRITICAL</failOnSeverity>
                             <warnOnSeverity>MINOR</warnOnSeverity>
+                            <failOnSeverity>CRITICAL</failOnSeverity>
                             <!--
                             <groups>
                                 <group>default</group>
@@ -421,45 +421,40 @@
                                 <defaultConceptSeverity>INFO</defaultConceptSeverity>
                                 <defaultConstraintSeverity>MAJOR</defaultConstraintSeverity>
                             </rule>
-                            <reportProperties>
-                                <asciidoc.report.rule.directory>${session.topLevelProject.basedir}/jqassistant</asciidoc.report.rule.directory>
-                                <asciidoc.report.file.include>index.adoc</asciidoc.report.file.include>
-                                <testImpactAnalysis.report.directory>${session.executionRootDirectory}/target/testimpactanalysis</testImpactAnalysis.report.directory>
-                            </reportProperties>
                         </configuration>
                     </execution>
                 </executions>
-                <!--
                 <configuration>
                     <store>
+                        <!--
                         <uri>bolt://localhost:7687</uri>
                         <username>neo4j</username>
                         <password>admin</password>
+                        <embedded>
+                            <listenAddress>localhost</listenAddress>
+                            <httpPort>7474</httpPort>
+                            <boltPort>7687</boltPort>
+                            <apocEnabled>true</apocEnabled>
+                        </embedded>
+                        -->
                     </store>
                 </configuration>
-                -->
                 <dependencies>
                     <dependency>
-                        <groupId>org.jqassistant.contrib.plugin</groupId>
-                        <artifactId>jqassistant-test-impact-analysis-plugin</artifactId>
-                        <version>1.4.0</version>
+                        <groupId>de.kontext-e.jqassistant.plugin</groupId>
+                        <artifactId>jqassistant.plugin.git</artifactId>
+                        <version>1.6.1</version>
                     </dependency>
                     <!-- additional plugins -->
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
-                        <version>1.1.0</version>
+                        <version>1.6.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
-                        <version>1.0.0</version>
-                    </dependency>
-                    <!-- fix a problem with rendering un-numbered lists in Asciidoctor 1.5.6 -->
-                    <dependency>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctorj</artifactId>
-                        <version>1.5.7</version>
+                        <version>1.6.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -502,7 +497,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
-                    <version>1.4.0</version>
+                    <version>1.5.0-RC1</version>
 					<executions>
 						<execution>
 							<phase>generate-sources</phase>

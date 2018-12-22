@@ -1,5 +1,5 @@
 [[spring:Default]]
-[role=group,includesGroups="spring-boot:Strict",includesConstraints="spring:ControllerMustBeLocatedInWebLayer,spring:ServiceMustBeLocatedInServiceLayer,spring:RepositoryMustBeLocatedInRepositoryLayer,spring:ImplementationDependencies,dependency:PackageCycles",includesConcepts="spring:VirtualDependency.graphml"]
+[role=group,includesGroups="spring-boot:Strict",includesConstraints="spring:*,dependency:PackageCycles",includesConcepts="spring:*"]
 == Spring Components
 
 The following constraints are verified:
@@ -100,7 +100,7 @@ public class MyController {
 
 [[spring:ControllerMustBeLocatedInWebLayer]]
 [source,cypher,role=constraint,requiresConcepts="spring-component:Controller,layer:Layer"]
-.A controller must be located in the layer named 'web'.
+.Controllers must be located in the layer named 'web'.
 ----
 MATCH
   (controller:Spring:Controller)
@@ -139,7 +139,7 @@ public class MyServiceImpl implements MyService {
 
 [[spring:ServiceMustBeLocatedInServiceLayer]]
 [source,cypher,role=constraint,requiresConcepts="spring-component:Service,layer:Layer"]
-.A service must be located in the layer named 'service'.
+.Services must be located in the layer named 'service'.
 ----
 MATCH
   (service:Spring:Service)
@@ -215,7 +215,7 @@ public class JdbcFooRepositoryImpl implements Repository {
 
 [[spring:RepositoryMustBeLocatedInRepositoryLayer]]
 [source,cypher,role=constraint,requiresConcepts="spring-component:Repository,layer:Layer"]
-.A repository must be located in the layer named 'repository'.
+.Repositories must be located in the layer named 'repository'.
 ----
 MATCH
   (repository:Spring:Repository)
