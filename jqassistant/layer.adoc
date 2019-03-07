@@ -6,36 +6,19 @@ This chapter describes the concepts and constraints related to the layered packa
 
 === Concepts
 
-
-[[layer:Root]]
-[plantuml,rootPackage,role=concept]
-.The root package of the application is "org.springframework.samples.petclinic" and labeled as `Root`.
-----
-@startuml
-skinparam componentStyle uml2
-
-node " " as main <<Maven>><<Main>><<Artifact>> {
-  package "root {fqn:'org.springframework.samples.petclinic'}" as root <<Package>><<(+) Root>>
-}
-
-main -> root : :CONTAINS
-
-@enduml
-----
-
-
 [[layer:Layer]]
-.The application has a layered structure. Each layer is represented by a package located directly in the root package and labeled as `Layer`.
-[plantuml,layer,role=concept,requiresConcepts="layer:Root"]
+.The application has a layered structure. Each layer is represented by a package located in the root package and labeled as `Layer`.
+[plantuml,layer,role=concept]
 ----
 @startuml
 skinparam componentStyle uml2
 
-package [] as root <<Package>><<Root>> {
-  package "layer" as layer <<Package>><<(+) Layer>>
-}
+artifact " " as Main <<Main>> <<Artifact>>
+package "{fqn:'org.springframework.samples.petclinic'}" as Root <<Package>>
+package "Layer" as Layer <<Package>><<(+)Layer>>
 
-root -> layer : :CONTAINS
+Main -> Root :  :CONTAINS
+Root -> Layer : :CONTAINS
 
 @enduml
 ----
@@ -61,8 +44,6 @@ RETURN
   layer1 as Dependent, layer2 as Dependency, weight as Weight
 ----
 
-
-
 [[layer:LayerDependencyDefinition]]
 [plantuml,layerdeps,role=concept,requiresConcepts="layer:Layer"]
 .The dependencies between layers are represented by `DEFINES_DEPENDENCY` relations.
@@ -76,11 +57,11 @@ skinparam componentStyle uml2
 [{name:"model"}]      as model      <<Layer>>
 
 
-web        -down-> service    : (+) :DEFINES_DEPENDENCY
-web        -down-> model      : (+) :DEFINES_DEPENDENCY
-service    -down-> repository : (+) :DEFINES_DEPENDENCY
-service    -down-> model      : (+) :DEFINES_DEPENDENCY
-repository -down-> model      : (+) :DEFINES_DEPENDENCY
+web        -down-> service    : (+):DEFINES_DEPENDENCY
+web        -down-> model      : (+):DEFINES_DEPENDENCY
+service    -down-> repository : (+):DEFINES_DEPENDENCY
+service    -down-> model      : (+):DEFINES_DEPENDENCY
+repository -down-> model      : (+):DEFINES_DEPENDENCY
 
 @enduml
 ----
