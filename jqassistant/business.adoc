@@ -1,15 +1,13 @@
 [[business:Default]]
-[role=group,includesConcepts="business:Subdomain,business:SubdomainDependency"]
+[role=group,includesConcepts="business:*"]
 == Business
 
 This section describes the application from the business' perspective.
 
 === Concepts
 
-The Spring PetClinic application consists of several business sub domains that can be identified by naming conventions.
-
 [[business:Subdomain]]
-.Creates predefined Subdomain nodes and connects them to all Type nodes via naming conventions.
+.The Spring PetClinic application consists of several business sub domains that can be identified by naming conventions. A type is labeled with `SubDomain` if its name contains the name of the subdomain.
 [source,cypher,role=concept]
 ----
 UNWIND [
@@ -30,10 +28,9 @@ WITH s
 RETURN s.name as Subdomain, COUNT(t) as Types
 ----
 
-There are dependencies between business sub domains.
 
 [[business:SubdomainDependency]]
-.Creates DEPENDS_ON relations between two subdomains if there are Java type dependencies between them.
+.A subdomain depends on another subdomain if there are Java type dependencies between them. These dependencies are represented by `DEPENDS_ON` relations.
 [source,cypher,role=concept,requiresConcepts="business:Subdomain"]
 ----
 MATCH
@@ -49,7 +46,7 @@ MERGE
 SET
   d.weight = weight
 RETURN
-  s1.name as Subdomain, collect(s2.name) as Dependencies
+  s1.name as Subdomain, weight as Weight, collect(s2.name) as Dependencies
 ORDER BY
   Subdomain
 ----
