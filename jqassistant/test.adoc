@@ -1,15 +1,11 @@
 [[test:Default]]
-[role=group,includesConstraints="test:TestMethodWithoutAssertion,junit4:IgnoreWithoutMessage"]
+[role=group,includesConstraints="test:*,junit:IgnoreWithoutMessage"]
 == Tests
 
 The following test rules apply:
 
 - <<test:TestMethodWithoutAssertion>>
 - All @Ignore annotations must provide a message
-
-The following reports are created:
-
-- <<test:TestAffectedByLastCommit>>
 
 === Constraints
 
