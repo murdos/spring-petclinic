@@ -435,6 +435,7 @@
                             <httpPort>7474</httpPort>
                             <boltPort>7687</boltPort>
                             <apocEnabled>true</apocEnabled>
+                            <graphAlgorithmsEnabled>true</graphAlgorithmsEnabled>
                         </embedded>
                         -->
                     </store>
