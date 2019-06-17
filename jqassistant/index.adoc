@@ -25,7 +25,7 @@ include::jQA:Summary[]
 The following rule groups are executed during a build:
 
 [[default]]
-[role=group,includesGroups="maven:Default,package:Default,layer:Default,spring:Default,model:Default,business:Default,management:Default,test:Default,vcs:Default"]
+[role=group,includesGroups="maven:Default,package:Default,layer:Default,spring:Default,model:Default,business:Default,management:Default,test:Default,vcs:Default,topics:Default"]
 - <<maven:Default>>
 - <<package:Default>>
 - <<layer:Default>>

@@ -1,0 +1,100 @@
+[[topics:Default]]
+[role=group,includesConcepts="topics:*"]
+== Topic Extraction
+
+=== Concept
+
+[[topics:Topic]]
+[source,cypher,role=concept]
+.Extracts topics from Java type names.
+----
+MATCH
+  (a:Main:Artifact)-[:CONTAINS]->(t:Type)
+WHERE NOT
+  t.name =~ ".*\\$[0-9]*"
+WITH
+  t, apoc.text.split(apoc.text.regreplace(t.name,"[A-Z]","_$0"),"\\_") as values
+UNWIND
+  values as value
+WITH
+  t, reduce(v=toLower(value), delim in [
+    "-","(",")","!",".",":",";","/",",","$"
+  ] | replace(v, delim, "")) as value
+WHERE
+  size(value) > 2
+MERGE
+  (topic:Topic{value:value})
+MERGE
+  (t)-[:CONTAINS_TOPIC]->(topic)
+RETURN
+  t.fqn, collect(topic.value)
+----
+
+[[topics:UniqueTopic]]
+[source,cypher,role=concept,requiresConcepts="topics:Topic"]
+.Removes duplicate topics if they are present in singular and plural form, e.g. `vet` and `vets`.
+----
+MATCH
+  (t:Topic)
+MATCH
+  (d:Topic)
+WHERE
+  d.value = t.value + "s"
+WITH
+  t, d
+MATCH
+  (n)-[:CONTAINS_TOPIC]->(d)
+MERGE
+  (n)-[:CONTAINS_TOPIC]->(t)
+DETACH DELETE
+  d
+RETURN
+  t.value as Topic
+----
+
+[[topics:DomainTopic]]
+[source,cypher,role=concept,requiresConcepts="topics:UniqueTopic"]
+.Adds a label `Domain` to domain specific topics.
+----
+MATCH
+  (t:Topic)
+WHERE
+  t.value in ["person","specialty","pet","vet","visit","owner","clinic"]
+SET
+  t:Domain
+RETURN
+  t.value
+----
+
+[[topics:TopicDependency]]
+[source,cypher,role=concept,requiresConcepts="topics:UniqueTopic"]
+.Propagates Java type dependencies to topics including a weight property.
+----
+MATCH
+  (t1:Type)-[d:DEPENDS_ON]->(t2:Type),
+  (t1)-[:CONTAINS_TOPIC]->(topic1:Topic),
+  (t2)-[:CONTAINS_TOPIC]->(topic2:Topic)
+WHERE
+  topic1 <> topic2
+WITH
+  topic1, topic2, sum(d.weight) as weight
+MERGE
+  (topic1)-[dot:DEPENDS_ON_TOPIC]->(topic2)
+SET
+  dot.weight=weight
+RETURN
+  *
+----
+
+[[topics:DomainTopicDependency]]
+[source,cypher,role=concept,requiresConcepts="topics:UniqueTopic",reportType="graphml"]
+.Creates a GraphML report about domain topics.
+----
+MATCH
+  (t:Domain:Topic)
+OPTIONAL MATCH
+  (t)-[d:DEPENDS_ON_TOPIC]->(:Domain:Topic)
+RETURN
+  *
+----
+

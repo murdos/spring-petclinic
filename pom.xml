@@ -417,6 +417,7 @@
                                     <path>${project.basedir}/.git</path>
                                 </scanInclude>
                             </scanIncludes>
+                            <apocEnabled>true</apocEnabled>
                             <rule>
                                 <defaultConceptSeverity>INFO</defaultConceptSeverity>
                                 <defaultConstraintSeverity>MAJOR</defaultConstraintSeverity>
