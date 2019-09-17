@@ -434,6 +434,7 @@
                             <httpPort>7474</httpPort>
                             <boltPort>7687</boltPort>
                             <apocEnabled>true</apocEnabled>
+                            <graphAlgorithmsEnabled>true</graphAlgorithmsEnabled>
                         </embedded>
                         -->
                     </store>
@@ -457,7 +458,7 @@
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
-                        <version>1.6.0</version>
+                        <version>1.7.0-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
             </plugin>
