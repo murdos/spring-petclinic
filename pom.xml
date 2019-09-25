@@ -408,6 +408,7 @@
                             <warnOnSeverity>MINOR</warnOnSeverity>
                             <failOnSeverity>CRITICAL</failOnSeverity>
                             <groups>
+                                <group>default</group>
                                 <group>jqassistant-dashboard:Default</group>
                             </groups>
 
@@ -475,18 +476,6 @@
                     <reportSet>
                         <reports>
                             <report>cobertura</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>com.buschmais.jqassistant</groupId>
-                <artifactId>jqassistant-maven-plugin</artifactId>
-                <version>${jqassistant.version}</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>report</report>
                         </reports>
                     </reportSet>
                 </reportSets>
