@@ -419,7 +419,6 @@
                             </scanIncludes>
                             <rule>
                                 <defaultConceptSeverity>INFO</defaultConceptSeverity>
-                                <defaultConstraintSeverity>MAJOR</defaultConstraintSeverity>
                             </rule>
                         </configuration>
                     </execution>
