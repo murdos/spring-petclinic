@@ -232,7 +232,7 @@ RETURN
 .Actual usage dependencies between Spring components, i.e. controller, service and repository implementations.
 ----
 MATCH
-  (type:Spring:Injectable)-[dependsOn:DEPENDS_ON]->(otherType:Spring:Injectable)
+  (type:Spring:Injectable)-[dependsOn:DEPENDS_ON|VIRTUAL_DEPENDS_ON]->(otherType:Spring:Injectable)
 RETURN
   type as Dependent,
   dependsOn as DependsOn,

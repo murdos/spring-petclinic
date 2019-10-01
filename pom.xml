@@ -443,7 +443,7 @@
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-dashboard-plugin</artifactId>
-                        <version>1.7.0-SNAPSHOT</version>
+                        <version>1.7.0</version>
                     </dependency>
                     <dependency>
                         <groupId>de.kontext-e.jqassistant.plugin</groupId>
@@ -453,12 +453,12 @@
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
-                        <version>1.7.0-SNAPSHOT</version>
+                        <version>1.7.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
-                        <version>1.7.0-SNAPSHOT</version>
+                        <version>1.7.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
