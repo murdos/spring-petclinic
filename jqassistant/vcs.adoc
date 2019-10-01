@@ -44,6 +44,8 @@ WITH
 MATCH
   (master)-[:HAS_HEAD]->(masterHead:Commit),
   (branch)-[:HAS_HEAD]->(branchHead:Commit)
+WHERE
+  branchHead <> masterHead
 OPTIONAL MATCH
   p=shortestPath((branchHead)-[:HAS_PARENT*]->(masterHead))
 WITH
