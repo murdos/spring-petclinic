@@ -42,7 +42,7 @@
         <cobertura.version>2.7</cobertura.version>
 
         <!-- jQAssistant -->
-        <jqassistant.version>1.6.0</jqassistant.version>
+        <jqassistant.version>1.7.0</jqassistant.version>
     </properties>
 
     <pluginRepositories>
@@ -407,11 +407,11 @@
                         <configuration>
                             <warnOnSeverity>MINOR</warnOnSeverity>
                             <failOnSeverity>CRITICAL</failOnSeverity>
-                            <!--
                             <groups>
                                 <group>default</group>
+                                <group>jqassistant-dashboard:Default</group>
                             </groups>
-                            -->
+
                             <scanIncludes>
                                 <scanInclude>
                                     <path>${project.basedir}/.git</path>
@@ -419,7 +419,6 @@
                             </scanIncludes>
                             <rule>
                                 <defaultConceptSeverity>INFO</defaultConceptSeverity>
-                                <defaultConstraintSeverity>MAJOR</defaultConstraintSeverity>
                             </rule>
                         </configuration>
                     </execution>
@@ -435,11 +434,17 @@
                             <httpPort>7474</httpPort>
                             <boltPort>7687</boltPort>
                             <apocEnabled>true</apocEnabled>
+                            <graphAlgorithmsEnabled>true</graphAlgorithmsEnabled>
                         </embedded>
                         -->
                     </store>
                 </configuration>
                 <dependencies>
+                    <dependency>
+                        <groupId>org.jqassistant.contrib.plugin</groupId>
+                        <artifactId>jqassistant-dashboard-plugin</artifactId>
+                        <version>1.7.0</version>
+                    </dependency>
                     <dependency>
                         <groupId>de.kontext-e.jqassistant.plugin</groupId>
                         <artifactId>jqassistant.plugin.git</artifactId>
@@ -449,12 +454,12 @@
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
-                        <version>1.6.0</version>
+                        <version>1.7.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
-                        <version>1.6.0</version>
+                        <version>1.7.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
@@ -476,18 +481,6 @@
                     <reportSet>
                         <reports>
                             <report>cobertura</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>com.buschmais.jqassistant</groupId>
-                <artifactId>jqassistant-maven-plugin</artifactId>
-                <version>${jqassistant.version}</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>report</report>
                         </reports>
                     </reportSet>
                 </reportSets>
