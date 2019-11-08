@@ -42,7 +42,7 @@
         <cobertura.version>2.7</cobertura.version>
 
         <!-- jQAssistant -->
-        <jqassistant.version>1.7.0</jqassistant.version>
+        <jqassistant.version>1.8.0-SNAPSHOT</jqassistant.version>
     </properties>
 
     <pluginRepositories>
@@ -448,12 +448,12 @@
                     <dependency>
                         <groupId>de.kontext-e.jqassistant.plugin</groupId>
                         <artifactId>jqassistant.plugin.git</artifactId>
-                        <version>1.6.1</version>
+                        <version>1.7.0</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
-                        <version>1.7.0</version>
+                        <version>1.8.0-SNAPSHOT</version>
                     </dependency>
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>

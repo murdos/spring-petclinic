@@ -1,6 +1,6 @@
 [[spring:Default]]
 [role=group,includesGroups="spring-boot:Strict",includesConstraints="spring:*,dependency:PackageCycles",includesConcepts="spring:*"]
-== Spring Components
+== Spring
 
 The following constraints are verified:
 
@@ -55,7 +55,7 @@ hide members
 *** JPA
 *** JDBC
 
-=== Constraints
+=== Project Constraints
 
 The following sections describe restrictions on dependencies between these components.
 
@@ -225,6 +225,10 @@ RETURN
   repository as Repository
 ----
 
+=== Default Constraints
+
+include::jQA:Rules[constraints="spring*:*"]
+
 === Reports
 
 [[spring:VirtualDependency.graphml]]
@@ -238,4 +242,5 @@ RETURN
   dependsOn as DependsOn,
   otherType as Dependency
 ----
+
 
