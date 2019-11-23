@@ -7,8 +7,6 @@ The following constraints are verified:
 
 * <<dependency:PackageCycles>>
 
-The following
-
 === Reports
 
 [[package:DependencyDiagram]]
