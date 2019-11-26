@@ -231,16 +231,30 @@ include::jQA:Rules[constraints="spring*:*"]
 
 === Reports
 
-[[spring:VirtualDependency.graphml]]
-[source,cypher,role=concept,requiresConcepts="spring-component:VirtualDependency",reportType="graphml"]
+[[spring:ComponentDiagram]]
+[source,cypher,role=concept,requiresConcepts="spring-component:VirtualDependency",reportType="plantuml-class-diagram"]
 .Actual usage dependencies between Spring components, i.e. controller, service and repository implementations.
 ----
 MATCH
-  (type:Spring:Injectable)-[dependsOn:DEPENDS_ON|VIRTUAL_DEPENDS_ON]->(otherType:Spring:Injectable)
+  (package:Package)-[:CONTAINS]->(component:Spring:Component)
+OPTIONAL MATCH
+  (:Main:Artifact)-[:CONTAINS]->(superType:Type),
+  (component)-[e:EXTENDS|IMPLEMENTS*]->(superType)
+OPTIONAL MATCH
+  (component)-[:DEPENDS_ON]->(dependency:Spring:Component)
 RETURN
-  type as Dependent,
-  dependsOn as DependsOn,
-  otherType as Dependency
+  *
 ----
 
+[[spring:SequenceDiagram]]
+[source,cypher,role=concept,requiresConcepts="spring-component:Component,java:VirtualInvokes",reportType="plantuml-sequence-diagram"]
+.Sequence diagram demonstrating sequence between Spring Components.
+----
+MATCH
+  (:Spring:Component{name:"VisitController"})-[:DECLARES]->(method{name:"processNewVisitForm"}),
+  (:Spring:Component)-[:DECLARES]->(other:Method),
+  sequence=shortestPath((method)-[:INVOKES|VIRTUAL_INVOKES*]->(other))
+RETURN
+  sequence
+----
 
