@@ -14,9 +14,7 @@ The following constraints are verified:
 .Diagram about dependencies between packages.
 ----
 MATCH
-  (artifact:Artifact)-[:CONTAINS]->(package:Package)-[:CONTAINS]->(:Type)
-WHERE
-  artifact.type <> "test-jar"
+  (artifact:Main:Artifact)-[:CONTAINS]->(package:Package)-[:CONTAINS]->(:Type)
 OPTIONAL MATCH
   (package)-[dependsOn:DEPENDS_ON]->(:Package)
 RETURN
