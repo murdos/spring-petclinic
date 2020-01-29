@@ -49,8 +49,3 @@ include::spring-jmx.adoc[]
 include::spring-test.adoc[]
 include::assertj.adoc[]
 
-== Imported Rules
-
-// Includes all executed rules that have been imported from plugins
-include::jQA:ImportedRules[]
-
