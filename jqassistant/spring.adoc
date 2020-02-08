@@ -1,6 +1,6 @@
 [[spring:Default]]
 [role=group,includesGroups="spring-boot:Strict",includesConstraints="spring:*,dependency:PackageCycles",includesConcepts="spring:*"]
-== Spring Components
+== Spring
 
 The following constraints are verified:
 
@@ -55,7 +55,7 @@ hide members
 *** JPA
 *** JDBC
 
-=== Constraints
+=== Project Constraints
 
 The following sections describe restrictions on dependencies between these components.
 
@@ -225,17 +225,35 @@ RETURN
   repository as Repository
 ----
 
+=== Default Constraints
+
+include::jQA:Rules[constraints="spring*:*"]
+
 === Reports
 
-[[spring:VirtualDependency.graphml]]
-[source,cypher,role=concept,requiresConcepts="spring-component:VirtualDependency",reportType="graphml"]
+[[spring:ComponentDiagram]]
+[source,cypher,role=concept,requiresConcepts="spring-component:Component",reportType="plantuml-class-diagram"]
 .Actual usage dependencies between Spring components, i.e. controller, service and repository implementations.
 ----
 MATCH
-  (type:Spring:Injectable)-[dependsOn:DEPENDS_ON|VIRTUAL_DEPENDS_ON]->(otherType:Spring:Injectable)
+  (componentPackage:Package)-[:CONTAINS]->(component:Spring:Component)
+OPTIONAL MATCH
+  (injectedTypePackage:Package)-[:CONTAINS]->(injectedType:Type),
+  (component)-[declares:DECLARES]->(field:Field)-[:OF_TYPE]->(injectedType),
+  (dependency:Component)-[extends:EXTENDS|IMPLEMENTS*]->(injectedType)
 RETURN
-  type as Dependent,
-  dependsOn as DependsOn,
-  otherType as Dependency
+  *
+----
+
+[[spring:SequenceDiagram]]
+[source,cypher,role=concept,requiresConcepts="spring-component:Component,java:VirtualInvokes",reportType="plantuml-sequence-diagram"]
+.Sequence diagram demonstrating sequence between Spring Components.
+----
+MATCH
+  (:Spring:Component{name:"VisitController"})-[:DECLARES]->(method{name:"processNewVisitForm"}),
+  (:Spring:Component)-[:DECLARES]->(other:Method),
+  sequence=shortestPath((method)-[:INVOKES|VIRTUAL_INVOKES*]->(other))
+RETURN
+  sequence
 ----
 

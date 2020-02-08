@@ -18,7 +18,7 @@ After opening a file you should apply a layout, e.g. menu:Layout[Hierarchical].
 == Summary
 
 // Includes a summary about all executed constraints and concepts including their status and description
-include::jQA:Summary[]
+include::jQA:Summary[constraints="*", concepts="*"]
 
 == CI Build
 
@@ -48,9 +48,4 @@ include::vcs.adoc[]
 include::spring-jmx.adoc[]
 include::spring-test.adoc[]
 include::assertj.adoc[]
-
-== Imported Rules
-
-// Includes all executed rules that have been imported from plugins
-include::jQA:ImportedRules[]
 
