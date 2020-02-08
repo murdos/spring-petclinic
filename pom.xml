@@ -609,7 +609,7 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
-                            <includesFile>${session.executionRootDirectory}/target/testimpactanalysis/${project.artifactId}</includesFile>
+                            <includesFile>${session.executionRootDirectory}/target/jqassistant/report/surefire-suite/${project.artifactId}</includesFile>
                         </configuration>
                     </plugin>
                     <plugin>
