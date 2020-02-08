@@ -447,22 +447,15 @@
                 </configuration>
                 <dependencies>
                     <dependency>
-                        <groupId>de.kontext-e.jqassistant.plugin</groupId>
-                        <artifactId>jqassistant.plugin.git</artifactId>
-                        <version>1.7.0</version>
-                    </dependency>
-                    <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-plantuml-rule-plugin</artifactId>
                         <version>1.8.0</version>
                     </dependency>
-                    <!-- Not yet released
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-dashboard-plugin</artifactId>
                         <version>1.8.0</version>
                     </dependency>
-                    -->
                     <!-- Optional
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>

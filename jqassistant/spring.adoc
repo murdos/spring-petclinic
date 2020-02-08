@@ -232,16 +232,15 @@ include::jQA:Rules[constraints="spring*:*"]
 === Reports
 
 [[spring:ComponentDiagram]]
-[source,cypher,role=concept,requiresConcepts="spring-component:VirtualDependency",reportType="plantuml-class-diagram"]
+[source,cypher,role=concept,requiresConcepts="spring-component:Component",reportType="plantuml-class-diagram"]
 .Actual usage dependencies between Spring components, i.e. controller, service and repository implementations.
 ----
 MATCH
-  (package:Package)-[:CONTAINS]->(component:Spring:Component)
+  (componentPackage:Package)-[:CONTAINS]->(component:Spring:Component)
 OPTIONAL MATCH
-  (:Main:Artifact)-[:CONTAINS]->(superType:Type),
-  (component)-[e:EXTENDS|IMPLEMENTS*]->(superType)
-OPTIONAL MATCH
-  (component)-[:DEPENDS_ON]->(dependency:Spring:Component)
+  (injectedTypePackage:Package)-[:CONTAINS]->(injectedType:Type),
+  (component)-[declares:DECLARES]->(field:Field)-[:OF_TYPE]->(injectedType),
+  (dependency:Component)-[extends:EXTENDS|IMPLEMENTS*]->(injectedType)
 RETURN
   *
 ----
