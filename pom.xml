@@ -456,6 +456,11 @@
                         <artifactId>jqassistant-dashboard-plugin</artifactId>
                         <version>1.8.0</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.jqassistant.contrib.plugin</groupId>
+                        <artifactId>jqassistant-wordcloud-report-plugin</artifactId>
+                        <version>1.8.0</version>
+                    </dependency>
                     <!-- Optional
                     <dependency>
                         <groupId>org.jqassistant.contrib.plugin</groupId>
