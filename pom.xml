@@ -42,7 +42,7 @@
         <cobertura.version>2.7</cobertura.version>
 
         <!-- jQAssistant -->
-        <jqassistant.version>1.8.0</jqassistant.version>
+        <jqassistant.version>1.9.0-ALPHA2</jqassistant.version>
     </properties>
 
     <pluginRepositories>
@@ -433,16 +433,9 @@
                 </executions>
                 <configuration>
                     <store>
-                        <!--
                         <uri>bolt://localhost:7687</uri>
                         <username>neo4j</username>
-                        <password>admin</password>
-                        <embedded>
-                            <listenAddress>localhost</listenAddress>
-                            <httpPort>7474</httpPort>
-                            <boltPort>7687</boltPort>
-                        </embedded>
-                        -->
+                        <password>jqassistant</password>
                     </store>
                 </configuration>
                 <dependencies>

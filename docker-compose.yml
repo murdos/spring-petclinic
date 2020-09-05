@@ -1,0 +1,14 @@
+# Provides an example Neo4j container for jQAssistant, use "docker-compose up" for spinning it up
+version: '3'
+services:
+  neo4j:
+    image: neo4j:4.0.8
+    ports:
+      - 7474:7474
+      - 7687:7687
+    environment:
+      # set initial credentials
+      - NEO4J_AUTH=neo4j/jqassistant
+# uncomment to mount the database directory locally
+#   volumes:
+#     - ./target/jqassistant/remote-store:/data/databases/graph.db
