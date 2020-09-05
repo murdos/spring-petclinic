@@ -436,7 +436,7 @@
                         <!--
                         <uri>bolt://localhost:7687</uri>
                         <username>neo4j</username>
-                        <password>admin</password>
+                        <password>jqassistant</password>
                         <embedded>
                             <listenAddress>localhost</listenAddress>
                             <httpPort>7474</httpPort>
